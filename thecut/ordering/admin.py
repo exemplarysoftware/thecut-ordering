@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
-from django.conf.urls.defaults import url, patterns
 from thecut.ordering.views import AdminReorderView
+
+try:
+    from django.conf.urls import url, patterns
+except ImportError:
+    from django.conf.urls.defaults import url, patterns
 
 
 class ReorderMixin(object):
