@@ -6,8 +6,14 @@ from django.views import generic
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 
+try:
+    from django.views.generic.list import MultipleObjectMixin
+except ImportError:
+    # Pre-Django 1.3 compatibility
+    from cbv.views.list import MultipleObjectMixin
 
-class BaseReorderView(generic.list.MultipleObjectMixin, generic.View):
+
+class BaseReorderView(MultipleObjectMixin, generic.View):
     """View for setting order on a list of objects.
 
     Currently only intended for AJAX POST requests, where an ordered list of
