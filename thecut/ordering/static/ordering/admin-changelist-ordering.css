@@ -1,0 +1,17 @@
+body.ajax-loading, body.ajax-loading * {
+  cursor: wait !important;
+}
+
+body.change-list #changelist form table .ui-sortable th {
+  padding-left: 15px;
+}
+
+.ui-sortable tr:hover th {
+  background-image: url("move.png");
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+.ui-sortable tr:hover {
+  cursor: move;
+}
