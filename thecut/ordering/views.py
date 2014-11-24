@@ -5,12 +5,7 @@ from django.http import (HttpResponse, HttpResponseBadRequest,
 from django.views import generic
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
-
-try:
-    from django.views.generic.list import MultipleObjectMixin
-except ImportError:
-    # Pre-Django 1.3 compatibility
-    from cbv.views.list import MultipleObjectMixin
+from django.views.generic.list import MultipleObjectMixin
 
 
 class BaseReorderView(MultipleObjectMixin, generic.View):
