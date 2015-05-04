@@ -17,7 +17,8 @@ class ReorderMixin(object):
               'ordering/admin-changelist-ordering.js']
 
     def get_urls(self):
-        urlpatterns = patterns('thecut.ordering.views',
+        urlpatterns = patterns(
+            'thecut.ordering.views',
             url(r'^reorder$', AdminReorderView.as_view(),
                 kwargs={'admin': self}, name='reorder'),
         )
