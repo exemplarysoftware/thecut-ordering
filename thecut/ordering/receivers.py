@@ -5,7 +5,7 @@ from django.db.models import Max
 
 def set_order(sender, instance, **kwargs):
     """If not set, determine and set the instance's order value."""
-    from thecut.ordering.models import OrderMixin
+    from .models import OrderMixin
 
     is_order_subclass = issubclass(instance.__class__, OrderMixin)
     raw = kwargs.get('raw', False)
