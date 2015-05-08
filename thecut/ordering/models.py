@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
+from . import receivers
 from django.db import models
-from thecut.ordering import receivers
 
 
 class OrderMixin(models.Model):
