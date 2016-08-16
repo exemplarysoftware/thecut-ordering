@@ -1,3 +1,6 @@
 include RELEASE-VERSION
 include README
 graft thecut/ordering/static
+recursive-include docs *.rst
+include LICENSE
+
