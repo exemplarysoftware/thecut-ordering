@@ -1,20 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 from django.test import TestCase
-from django import VERSION as DJANGO_VERSION
-from test_app.factories import OrderingTestModelFactory
 from test_app.models import OrderingTestModel
-from test_app.forms import OrderingTestNoOrderFieldForm, OrderingTestHasOrderFieldForm
-from unittest import skipIf
-import thecut.ordering.models
-from django.db import models
-from test_app.factories import OrderingTestModelFactory
 from test_app.admin import OrderingTestModelAdmin
-from test_app.models import OrderingTestModel
 from django.contrib.admin.sites import AdminSite
-from django.contrib.auth.models import User, Permission
-from django.core.urlresolvers import reverse
-from test_app.urls import urlpatterns
+from django.contrib.auth.models import User
 
 
 class TestOrderingViews(TestCase):
@@ -42,4 +32,3 @@ class TestOrderingViews(TestCase):
         urls = admin.get_urls()
         urls = [url for url in urls if url.name == 'reorder']
         self.assertEqual(len(urls), 1)
-

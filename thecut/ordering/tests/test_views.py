@@ -1,20 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 from django.test import TestCase, RequestFactory
-from django import VERSION as DJANGO_VERSION
 from test_app.factories import OrderingTestModelFactory
 from test_app.models import OrderingTestModel
-from test_app.forms import OrderingTestNoOrderFieldForm, OrderingTestHasOrderFieldForm
-from unittest import skipIf
-import thecut.ordering.models
-from django.db import models
-from test_app.factories import OrderingTestModelFactory
 from test_app.admin import OrderingTestModelAdmin
-from test_app.models import OrderingTestModel
 from django.contrib.admin.sites import AdminSite
 from django.contrib.auth.models import User, Permission
-from django.core.urlresolvers import reverse
-from test_app.urls import urlpatterns
 from thecut.ordering.views import AdminReorderView
 from django.http import HttpResponseForbidden
 from django.contrib.contenttypes.models import ContentType
@@ -33,8 +24,9 @@ class TestSecurityOrderingViews(TestCase):
         self.staff_user = User.objects.create_user(
             'staff', 'a@a.com', 'staffpass')
         content_type = ContentType.objects.get_for_model(OrderingTestModel)
-        permission = Permission.objects.get(codename='change_orderingtestmodel',
-                                            content_type=content_type)
+        permission = Permission.objects.get(
+                codename='change_orderingtestmodel',
+                content_type=content_type)
         self.staff_user.user_permissions.add(permission)
         self.staff_user.is_staff = True
         self.staff_user.save()
@@ -96,7 +88,7 @@ class TestReorderingOrderingViews(TestCase):
         ordertest1.save()
         ordertest2 = OrderingTestModelFactory.build()
         ordertest2.save()
-        request = self.factory.post('', {'pk':[ordertest2.pk,ordertest1.pk]})
+        request = self.factory.post('', {'pk': [ordertest2.pk, ordertest1.pk]})
 
         request.user = self.admin_user
 
@@ -111,4 +103,3 @@ class TestReorderingOrderingViews(TestCase):
         self.assertEqual(len(ordertests), 2)
         self.assertEqual(ordertests[0].pk, ordertest2.pk)
         self.assertEqual(ordertests[1].pk, ordertest1.pk)
-
