@@ -13,3 +13,5 @@ include
 lib
 dist
 share
+local
+
