@@ -13,3 +13,4 @@ class OrderingTestModelFactory(factory.django.DjangoModelFactory):
 
     class Meta(object):
         model = OrderingTestModel
+

@@ -5,9 +5,10 @@ from django import VERSION as DJANGO_VERSION
 from test_app.factories import OrderingTestModelFactory
 from test_app.models import OrderingTestModel
 from unittest import skipIf
+import thecut.ordering.models
+from django.db import models
 
-
-class TestAuthorshipModel(TestCase):
+class TestOrderingTestModel(TestCase):
 
     def test_the_order_is_the_default_order_of_query(self):
         ordertest1 = OrderingTestModelFactory.build()

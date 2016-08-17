@@ -26,7 +26,7 @@ You can perform basic testing against your system's Python / Django.
 
 5. Print the report and include the line numbers that are not executed
 
-    # coverage report -m
+    $ coverage report -m
 
 
 
