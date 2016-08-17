@@ -2,7 +2,7 @@ from __future__ import print_function
 from setuptools import setup, find_packages
 import io
 import os
-from thecut.exampleapp import __version__
+from thecut.ordering import __version__
 
 
 here = os.path.abspath(os.path.dirname(__file__))
