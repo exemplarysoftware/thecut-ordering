@@ -20,6 +20,15 @@ You can perform basic testing against your system's Python / Django.
 
     $ python runtests.py
 
+4. Alternative if you wish to get the coverage
+
+    $ coverage run --source "thecut/ordering" runtests.py 
+
+5. Print the report and include the line numbers that are not executed
+
+    # coverage report -m
+
+
 
 Using a virtualenv
 ------------------
