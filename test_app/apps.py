@@ -5,6 +5,5 @@ from django import apps
 
 class AppConfig(apps.AppConfig):
 
-    label = 'ordering'
-
-    name = 'thecut.ordering'
+    name = 'test_app'
+    label = 'test_app'

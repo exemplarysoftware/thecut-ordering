@@ -7,7 +7,7 @@ import sys
 
 class ReorderMixin(object):
 
-    list_per_page = sys.maxint
+    list_per_page = sys.maxsize
 
     class Media(object):
         css = {'screen': ['ordering/admin-changelist-ordering.css']}
