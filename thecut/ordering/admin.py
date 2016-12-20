@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 from .views import AdminReorderView
-from django.conf.urls import url, patterns
+from django.conf.urls import url
 import sys
 
 
@@ -16,10 +16,9 @@ class ReorderMixin(object):
               'ordering/admin-changelist-ordering.js']
 
     def get_urls(self):
-        urlpatterns = patterns(
-            'thecut.ordering.views',
+        urlpatterns = [
             url(r'^reorder$', AdminReorderView.as_view(),
                 kwargs={'admin': self}, name='reorder'),
-        )
+        ]
         urlpatterns += super(ReorderMixin, self).get_urls()
         return urlpatterns
