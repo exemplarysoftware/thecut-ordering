@@ -1,6 +1,6 @@
-=============================
-Welcome to thecut-ordering
-=============================
+===============
+thecut-ordering
+===============
 
 ..
   .. image:: https://travis-ci.org/thecut/thecut-ordering.svg
