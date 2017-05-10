@@ -1,8 +1,8 @@
 from __future__ import print_function
 from setuptools import setup, find_packages
+from thecut.ordering import __version__
 import io
 import os
-from thecut.ordering import __version__
 
 
 here = os.path.abspath(os.path.dirname(__file__))
@@ -45,13 +45,13 @@ setup(
     platforms='any',
     classifiers=[
         'Programming Language :: Python',
-        'Development Status :: 1 - Planning',
-        # 'Development Status :: 2 - Pre-Alpha',
-        # 'Development Status :: 3 - Alpha',
-        # 'Development Status :: 4 - Beta',
-        # 'Development Status :: 5 - Production/Stable',
-        # 'Development Status :: 6 - Mature',
-        # 'Development Status :: 7 - Inactive',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Development Status :: 5 - Production/Stable',
         'Natural Language :: English',
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
@@ -62,7 +62,7 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Framework :: Django',
         'Framework :: Django :: 1.8',
-        'Framework :: Django :: 1.9',
         'Framework :: Django :: 1.10',
+        'Framework :: Django :: 1.11',
     ],
 )
