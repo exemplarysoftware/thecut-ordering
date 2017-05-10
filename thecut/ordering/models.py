@@ -11,5 +11,3 @@ class OrderMixin(models.Model):
     class Meta(object):
         abstract = True
         ordering = ['order', 'pk']
-
-models.signals.post_init.connect(receivers.set_order)
