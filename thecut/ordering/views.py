@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import, unicode_literals
+
+
 from django.http import HttpResponse, HttpResponseForbidden
-from django.views import generic
 from django.utils.decorators import method_decorator
+from django.views import generic
 from django.views.decorators.cache import never_cache
 from django.views.generic.list import MultipleObjectMixin
 
@@ -17,7 +18,7 @@ class BaseReorderView(MultipleObjectMixin, generic.View):
 
     """
 
-    order_field = 'order'
+    order_field = "order"
 
     @method_decorator(never_cache)
     def dispatch(self, *args, **kwargs):
@@ -27,9 +28,9 @@ class BaseReorderView(MultipleObjectMixin, generic.View):
         return self.order_field
 
     def post(self, *args, **kwargs):
-        ordered_pks = self.request.POST.getlist('pk')
+        ordered_pks = self.request.POST.getlist("pk")
         self.set_order(ordered_pks)
-        return HttpResponse(content_type='text/plain')
+        return HttpResponse(content_type="text/plain")
 
     def set_order(self, ordered_pks):
         """Update the order field value for each item in ``ordered_pks``.
@@ -48,19 +49,21 @@ class BaseReorderView(MultipleObjectMixin, generic.View):
 
 
 class AdminReorderView(BaseReorderView):
-
     def dispatch(self, request, *args, **kwargs):
         # Set queryset, and check for 'change' permissions
-        self.admin = kwargs['admin']
+        self.admin = kwargs["admin"]
         model = self.admin.model
-        permission = '{0}.change_{1}'.format(model._meta.app_label.lower(),
-                                             model._meta.object_name.lower())
+        permission = "{0}.change_{1}".format(
+            model._meta.app_label.lower(), model._meta.object_name.lower()
+        )
         if not request.user.has_perm(permission):
-            return HttpResponseForbidden(content_type='text/plain')
+            return HttpResponseForbidden(content_type="text/plain")
         return super(AdminReorderView, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
-        get_queryset = (self.admin.get_queryset
-                        if hasattr(self.admin, 'get_queryset')
-                        else self.admin.queryset)  # Pre Django 1.6
+        get_queryset = (
+            self.admin.get_queryset
+            if hasattr(self.admin, "get_queryset")
+            else self.admin.queryset
+        )  # Pre Django 1.6
         return get_queryset(self.request)

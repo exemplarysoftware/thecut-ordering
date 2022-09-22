@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import, unicode_literals
-from . import receivers
+
+
 from django import apps
 from django.db.models import signals
+
+from . import receivers
 
 
 class AppConfig(apps.AppConfig):
 
-    label = 'ordering'
+    label = "ordering"
 
-    name = 'thecut.ordering'
+    name = "thecut.ordering"
 
     def ready(self):
         signals.post_init.connect(receivers.set_order)

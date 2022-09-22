@@ -5,11 +5,10 @@ thecut.ordering
 ===============
 
 To install this application (whilst in the project's activated virtualenv)::
-    pip install git+ssh://git@git.thecut.net.au/thecut-ordering
+pip install git+ssh://git@git.thecut.net.au/thecut-ordering
 
-
-If you are using the admin reordering mixin, then add ``thecut.ordering`` to
-the project's ``INSTALLED_APPS`` setting, so that the required static files are
+If you are using the admin reordering mixin, then add `thecut.ordering` to
+the project's `INSTALLED_APPS` setting, so that the required static files are
 found::
 
     INSTALLED_APPS = (

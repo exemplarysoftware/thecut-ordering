@@ -1,4 +1,5 @@
-body.ajax-loading, body.ajax-loading * {
+body.ajax-loading,
+body.ajax-loading * {
   cursor: wait !important;
 }
 

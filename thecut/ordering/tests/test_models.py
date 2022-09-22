@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import, unicode_literals
+
+
 from django.test import TestCase
+
 from test_app.factories import OrderingTestModelFactory
 from test_app.models import OrderingTestModel
 
 
 class TestOrderingTestModel(TestCase):
-
     def test_the_order_is_the_default_order_of_query(self):
         ordertest1 = OrderingTestModelFactory.build()
         ordertest1.save()

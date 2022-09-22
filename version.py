@@ -31,22 +31,24 @@
 #
 #   include RELEASE-VERSION
 
-from __future__ import unicode_literals
-from subprocess import Popen, PIPE
 
+from subprocess import PIPE, Popen
 
-__all__ = ['get_git_version']
+__all__ = ["get_git_version"]
 
 
 def call_git_describe(abbrev=4):
     try:
-        p = Popen(['git', 'describe', '--abbrev=%d' % abbrev],
-                  stdout=PIPE, stderr=PIPE)
+        p = Popen(
+            ["git", "describe", "--abbrev=%d" % abbrev],
+            stdout=PIPE,
+            stderr=PIPE,
+        )
         p.stderr.close()
         line = p.stdout.readlines()[0]
         return line.strip()
 
-    except:
+    except (OSError, IndexError):
         return None
 
 
@@ -61,7 +63,7 @@ def read_release_version():
         finally:
             f.close()
 
-    except:
+    except (OSError, IndexError):
         return None
 
 
@@ -99,8 +101,8 @@ def get_git_version(abbrev=4):
 
     # Finally, return the current version.
 
-    return '{0}'.format(version)
+    return "{0}".format(version)
 
 
 if __name__ == "__main__":
-    print(get_git_version())
+    print((get_git_version()))
